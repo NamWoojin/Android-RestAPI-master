@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Android-ResAPI</string>
+    <string name="device_state">디바이스 최신 상태</string>
+    <string name="temp">온도(c): </string>
+    <string name="led">LED 상태: </string>
+    <string name="selfControl">Self </string>
+    <string name="autoControl">Auto </string>
+</resources>
