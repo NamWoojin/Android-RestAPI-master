@@ -101,6 +101,7 @@
 
 
 4. [디바이스 상태 변경 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.3.html)
+
 **[lambda함수 코드 다운로드 링크]**(https://github.com/NamWoojin/UpdateCoolerHandler.git)
 	
 	(링크와 다르게 설정해야 하는 부분)
