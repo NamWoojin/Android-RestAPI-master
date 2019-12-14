@@ -13,16 +13,11 @@
 		- 디바이스의 정보를 변경하거나 조회하는 REST API
 		- 디바이스의 로그 정보를 조회하는 REST API
 
-![software architecture](./figure/software architecture.png)
+![](./figure/software architecture.png)
 
 ### 1. REST API 설계
 - 다음 프로그램 코드를 실행시키기 위해서는 다음 형식의 **REST API**가 준비되어 있어야 합니다.
-	- 디바이스 목록 조회
-		
-		```
-		GET /devices
-		```
-	
+
 	- 디바이스 상태 조회
 
 		```	
@@ -40,12 +35,16 @@
 			{ 
 				"tags" : [
 					{
-						"attrName": "temperature",
-						"attrValue": "27.0"
+						"attrName": "user_mode",
+						"attrValue": "self"
 					},
 					{
-						"attrName": "LED",
-						"attrValue": "OFF"
+						"attrName": "motor_step",
+						"attrValue": "2"
+					},
+					{
+						"attrName" : "temperature",
+						"attrValue" : "24"
 					}
 				]
 			}
@@ -62,12 +61,13 @@
 다음 방법을 통해서 다음 IoT 백엔드를 구축한다.
 
 1. [AWS IoT와 아두이노 연결하기](https://kwanulee.github.io/IoTPlatform/start-aws-iot.html#2)
-2. [디바이스 상태에 따라 경고 이메일을 전송하는 IoT 백엔드 구축](https://kwanulee.github.io/IoTPlatform/serverless.html#3)
-3. [디바이스 데이터 저장 IoT 백엔드 구축](https://kwanulee.github.io/IoTPlatform/dynamodb.html#4)
-4. [디바이스 목록 조회 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.1.html)
-5. [디바이스 상태 조회 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.2.html)
-6. [디바이스 상태 변경 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.3.html)
-7. [디바이스 로그 조회 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.4.html)
+(위 링크와 다른 주요 부분)
+
+
+2. [디바이스 데이터 저장 IoT 백엔드 구축](https://kwanulee.github.io/IoTPlatform/dynamodb.html#4)
+3. [디바이스 상태 조회 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.2.html)
+4. [디바이스 상태 변경 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.3.html)
+5. [디바이스 로그 조회 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.4.html)
 
 ### 3. Android 앱 설치 및 실행
 - 설치 방법
