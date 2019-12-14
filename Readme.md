@@ -87,7 +87,7 @@
 - 설치 방법
 	- **Clone or download** 를 클릭 후, Download ZIP을 통해 프로젝트 zip파일을 다운 받아서 압축을 푼 후에, AndroidStudio를 통해 실행 시킵니다.
 	
-	![](figures/install.png)
+	![](figures/다운로드화면.PNG)
 
 - 초기 실행 화면
 
