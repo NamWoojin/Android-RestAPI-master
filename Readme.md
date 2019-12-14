@@ -94,7 +94,8 @@
 	SELECT *, 'MyFanMotor' as device FROM '$aws/things/MyFanMotor/shadow/update/documents'
 	```
 	
-디바이스가 생성하는 정보에 맞게 Tag를 지정	
+	디바이스가 생성하는 정보에 맞게 Tag를 지정
+	
 ![](figures/디바이스데이터저장lambda함수.png)
 
 3. [디바이스 상태 조회 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.2.html)
@@ -102,7 +103,7 @@
 
 4. [디바이스 상태 변경 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.3.html)
 
-**[lambda함수 코드 다운로드 링크]**(https://github.com/NamWoojin/UpdateCoolerHandler.git)
+	**[lambda함수 코드 다운로드 링크]**(https://github.com/NamWoojin/UpdateCoolerHandler.git)
 	
 	(링크와 다르게 설정해야 하는 부분)
 	
