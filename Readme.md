@@ -69,13 +69,13 @@
 1. [AWS IoT와 아두이노 연결하기](https://kwanulee.github.io/IoTPlatform/start-aws-iot.html#2)
 
 	(링크와 다르게 설정해야 하는 부분)
-
+	**[아두이노 코드 다운로드 링크]**(https://github.com/YeJi17/NoteBookCooler_Arduino)
+	
 	iot 사물 이름 : 
 	```
 	MyFanMotor
 	```
 	
-**[아두이노 코드](https://github.com/YeJi17/NoteBookCooler_Arduino)
 
 ![](figures/arduino_code_1.PNG)
 	
@@ -95,7 +95,6 @@
 
 3. [디바이스 상태 조회 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.2.html)
 
-(위 링크와 다른 주요 부분)
 
 4. [디바이스 상태 변경 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.3.html)
 ```
@@ -107,7 +106,6 @@
 
 5. [디바이스 로그 조회 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.4.html)
 
-(위 링크와 다른 주요 부분)
 
 ### 3. Android 앱 설치 및 실행
 - 설치 방법
