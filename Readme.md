@@ -63,7 +63,6 @@
 1. [AWS IoT와 아두이노 연결하기](https://kwanulee.github.io/IoTPlatform/start-aws-iot.html#2)
 
 (위 링크와 다른 주요 부분)
-
 	iot 사물 이름 : MyFanCooler
 	![](figures/arduino_code_1.PNG)
 	![](figures/arduino_code_2.PNG)
