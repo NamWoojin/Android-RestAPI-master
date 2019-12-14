@@ -80,6 +80,8 @@
 
 	디바이스가 생성하는 정보에 맞게 Tag를 지정
 	
+	**규칙쿼리설명문** SELECT *, 'MyFanMotor' as device FROM '$aws/things/MyFanMotor/shadow/update/documents'
+	
 ![](figures/디바이스데이터저장lambda함수.png)
 
 3. [디바이스 상태 조회 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.2.html)
