@@ -85,6 +85,8 @@
 
 2. [디바이스 데이터 저장 IoT 백엔드 구축](https://kwanulee.github.io/IoTPlatform/dynamodb.html#4)
 
+	**[lambda함수 코드 다운로드 링크]**(https://github.com/NamWoojin/RecordingCooler.git)
+	
 	(링크와 다르게 설정해야 하는 부분)
 	
 	**규칙쿼리설명문** 
@@ -99,6 +101,10 @@
 
 
 4. [디바이스 상태 변경 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.3.html)
+**[lambda함수 코드 다운로드 링크]**(https://github.com/NamWoojin/UpdateCoolerHandler.git)
+	
+	(링크와 다르게 설정해야 하는 부분)
+	
 ```
 어플리케이션이 ‘auto’모드를 전송했을 때 : 받아온 온도 값에 따라 쿨러의 단계를 지정하여 Shadow에 전송
 어플리케이션이 'self'모드를 전송했을 때 : 어플리케이션에서 들어온 값 그대로 Shadow에 전송
