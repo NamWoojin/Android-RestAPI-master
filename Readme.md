@@ -69,6 +69,7 @@
 1. [AWS IoT와 아두이노 연결하기](https://kwanulee.github.io/IoTPlatform/start-aws-iot.html#2)
 
 	(링크와 다르게 설정해야 하는 부분)
+	
 	**[아두이노 코드 다운로드 링크]**(https://github.com/YeJi17/NoteBookCooler_Arduino)
 	
 	iot 사물 이름 : 
