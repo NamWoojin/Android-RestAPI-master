@@ -94,7 +94,15 @@
 
 - 초기 실행 화면
 
-![](figures/초기화면.jpeg)
+![](figures/초기화면.jpg)
+
+- 로그 조회 화면(온도 값)
+
+![](figures/로그조회1.jpg)
+
+- 로그 조회 화면(모터 단계 값)
+
+![](figures/로그조회2.jpg)
 
 - 아래 세가지 버튼을 클릭하기 전에 API URI를 입력해야 합니다.
 	- Amazon API Gateway로 부터 만들어진  API 서버 URL을 기록해 둔다. 
