@@ -1,5 +1,6 @@
 package com.example.android_resapi.ui;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class FirstActivity extends AppCompatActivity implements View.OnClickListener {
-    String urlbase = "https://4iyskfbmz1.execute-api.ap-northeast-2.amazonaws.com/prod/devices/MyMKRWiFi1010";
+    String urlbase = "https://ljfjq25tm4.execute-api.ap-northeast-2.amazonaws.com/prod/devices/MyFanCooler";    //접속할 url
     final static String TAG = "AndroidAPITest";
     Timer timer;
     Button autoButton;
@@ -50,6 +51,7 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
         twoButton = findViewById(R.id.twoButton);
         threeButton = findViewById(R.id.threeButton);
 
+
         autoButton.setOnClickListener(this);
         selfButton.setOnClickListener(this);
         offButton.setOnClickListener(this);
@@ -57,12 +59,22 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
         twoButton.setOnClickListener(this);
         threeButton.setOnClickListener(this);
 
+        Button GetLogButton= findViewById(R.id.graph_etc_button);   //'더보기' 버튼을 통한 LogActivity진입
+        GetLogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FirstActivity.this,LogActivity.class);
+                intent.putExtra("getLogsURL", urlbase.concat("/log"));
+                startActivity(intent);
+
+            }
+        });
 
         GetTemperature();
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v) {  //버튼에 따른 모드, 쿨러 변수 조절
 
         switch (v.getId()) {
             case R.id.autoButton:
@@ -97,7 +109,7 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    private void ControlMode(int button, String fm) {
+    private void ControlMode(int button, String fm) {  // 제어 모드에 따른 쿨러 단계 버튼 활성화 및 비활성화
         if (button == 1) {
             autoButton.setBackgroundColor(buttonClickedColor);
             selfButton.setBackgroundColor(buttonNonClickedColor);
@@ -118,12 +130,11 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
             twoButton.setEnabled(true);
             threeButton.setEnabled(true);
             offButton.setBackgroundColor(buttonClickedColor);
-            // + 모터 끄는 메소드
         }
     }
 
 
-    private void ControlColor(String fp) {
+    private void ControlColor(String fp) {  //버튼 색 변경
         offButton.setBackgroundColor(buttonNonClickedColor);
         oneButton.setBackgroundColor(buttonNonClickedColor);
         twoButton.setBackgroundColor(buttonNonClickedColor);
@@ -143,7 +154,7 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-    private void GetTemperature() {
+    private void GetTemperature() { //온도와 모터 단계를 가져오기 위한 GetThingShadow 클래스 실행
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -155,7 +166,7 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-    void SendInformation(String mode, int step){
+    void SendInformation(String mode, int step){ //제어 모드, 모터 단계, 온도값을 담아 Lambda함수로 전달하는 함수
         JSONObject payload = new JSONObject();
         String temp = GetThingShadow.temperature;
             try {

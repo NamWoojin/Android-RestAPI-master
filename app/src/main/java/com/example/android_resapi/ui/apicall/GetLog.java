@@ -1,9 +1,9 @@
 package com.example.android_resapi.ui.apicall;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import org.json.JSONArray;
@@ -12,16 +12,35 @@ import org.json.JSONObject;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.example.android_resapi.R;
 import com.example.android_resapi.httpconnection.GetRequest;
+import com.example.android_resapi.ui.MyXAxisValueFormatter;
+import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 public class GetLog extends GetRequest {
+    private LineChart lineChart;
+    private PieChart pieChart;
     final static String TAG = "AndroidAPITest";
     String urlStr;
-    public GetLog(Activity activity, String urlStr) {
+    String mode;
+    public GetLog(Activity activity, String urlStr,String mode) {
         super(activity);
         this.urlStr = urlStr;
+        this.mode = mode;
     }
 
     @Override
@@ -29,12 +48,10 @@ public class GetLog extends GetRequest {
         try {
 
             TextView textView_Date1 = activity.findViewById(R.id.textView_date1);
-            TextView textView_Time1 = activity.findViewById(R.id.textView_time1);
             TextView textView_Date2 = activity.findViewById(R.id.textView_date2);
-            TextView textView_Time2 = activity.findViewById(R.id.textView_time2);
 
-            String params = String.format("?from=%s:00&to=%s:00",textView_Date1.getText().toString()+textView_Time1.getText().toString(),
-                                                            textView_Date2.getText().toString()+textView_Time2.getText().toString());
+            String params = String.format("?from=%s:00&to=%s:00",textView_Date1.getText().toString()+"00:00",
+                    textView_Date2.getText().toString()+"23:59");
 
             Log.i(TAG,"urlStr="+urlStr+params);
             url = new URL(urlStr+params);
@@ -49,24 +66,23 @@ public class GetLog extends GetRequest {
 
     @Override
     protected void onPostExecute(String jsonString) {
+
+        lineChart = (LineChart)activity.findViewById(R.id.chart);
+        pieChart = (PieChart)activity.findViewById((R.id.piechart));
         TextView message = activity.findViewById(R.id.message2);
         if (jsonString == null) {
             message.setText("로그 없음");
             return;
         }
         message.setText("");
-        ArrayList<Tag> arrayList = getArrayListFromJSONString(jsonString);
+        getArrayListFromJSONString(jsonString);
 
-        final ArrayAdapter adapter = new ArrayAdapter(activity,
-                android.R.layout.simple_list_item_1,
-                arrayList.toArray());
-        ListView txtList = activity.findViewById(R.id.logList);
-        txtList.setAdapter(adapter);
-        txtList.setDividerHeight(10);
+
     }
 
-    protected ArrayList<Tag> getArrayListFromJSONString(String jsonString) {
-        ArrayList<Tag> output = new ArrayList();
+    protected void getArrayListFromJSONString(String jsonString) {
+        List<Entry> entries = new ArrayList<>();
+
         try {
             // 처음 double-quote와 마지막 double-quote 제거
             jsonString = jsonString.substring(1,jsonString.length()-1);
@@ -78,22 +94,117 @@ public class GetLog extends GetRequest {
             JSONObject root = new JSONObject(jsonString);
             JSONArray jsonArray = root.getJSONArray("data");
 
-            for (int i = 0; i < jsonArray.length(); i++) {
+            if(mode.equals("temp")){
+                lineChart.setVisibility(View.VISIBLE);
+                pieChart.setVisibility(View.GONE);
 
-                JSONObject jsonObject = (JSONObject)jsonArray.get(i);
 
-                Tag thing = new Tag(jsonObject.getString("temperature"),
-                                    jsonObject.getString("LED"),
-                                    jsonObject.getString("timestamp"));
+                int num = jsonArray.length() / 30;
 
-                output.add(thing);
+                String[] labels = new String[num];
+                for (int i = 0; i < num; i++) {
+                    JSONObject jsonObject = (JSONObject)jsonArray.get(i*30);
+                    entries.add(new Entry(i, Float.parseFloat(jsonObject.getString("temperature"))));
+
+                    labels[i] = jsonObject.getString("timestamp");
+                }
+
+
+                LineDataSet dataset = new LineDataSet(entries, "temperature");
+                dataset.setLineWidth(2);
+                dataset.setCircleRadius(6);
+                dataset.setCircleColor(Color.parseColor("#FFFE9C88"));
+                //dataset.setCircleColorHole(Color.rgb(245,217,97));
+                dataset.setColor(Color.parseColor("#FFFE9C88"));
+                //dataset.setDrawCircleHole(true);
+                dataset.setDrawCircles(true);
+                dataset.setDrawHorizontalHighlightIndicator(false);
+                dataset.setDrawHighlightIndicators(false);
+                dataset.setDrawValues(true);
+                LineData lineData = new LineData(dataset);
+                lineChart.setData(lineData);
+                lineData.setValueTextSize(10);
+                XAxis xAxis = lineChart.getXAxis();
+                xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                xAxis.setLabelRotationAngle(20);
+                xAxis.setLabelCount(jsonArray.length()/30);
+                xAxis.setValueFormatter(new MyXAxisValueFormatter(labels));
+
+                YAxis yLAxis = lineChart.getAxisLeft();
+                YAxis yRAxis = lineChart.getAxisRight();
+                yRAxis.setDrawLabels(false);
+                yRAxis.setDrawAxisLine(false);
+                yRAxis.setDrawGridLines(false);
+                yLAxis.setTextColor(Color.BLACK);
+
+                Description description = new Description();
+                description.setText("");
+
+                lineChart.setDoubleTapToZoomEnabled(false);
+                lineChart.setDrawGridBackground(false);
+                lineChart.setDescription(description);
+                lineChart.animateY(2000, Easing.EasingOption.EaseInCubic);
+                lineChart.invalidate();
             }
+
+            else if(mode.equals("step")){
+                lineChart.setVisibility(View.GONE);
+                pieChart.setVisibility(View.VISIBLE);
+
+                pieChart.setUsePercentValues(true);
+                pieChart.setExtraOffsets(5,10,5,5);
+                pieChart.setDrawHoleEnabled(false);
+                int countZero = 0;
+                int countOne = 0;
+                int countTwo=0;
+                int countThree=0;
+                String led;
+                ArrayList<PieEntry> yValues = new ArrayList<PieEntry>();
+                for (int i = 0; i < jsonArray.length(); i++) {
+
+                    JSONObject jsonObject = (JSONObject)jsonArray.get(i);
+                    led = jsonObject.getString("motor_step");
+                    if(led.equals("0"))
+                        countZero++;
+                    else if(led.equals("1"))
+                        countOne++;
+                    else if(led.equals("2"))
+                        countTwo++;
+                    else if(led.equals("3"))
+                        countThree++;
+
+                }
+                yValues.add(new PieEntry(countZero,"OFF"));
+                yValues.add(new PieEntry(countOne,"1단계"));
+                yValues.add(new PieEntry(countTwo,"2단계"));
+                yValues.add(new PieEntry(countThree,"3단계"));
+
+//                pieChart.animateY(1000,Easing.EasingOption.EaseInOutElastic);
+
+                Description description = new Description();
+                description.setText("");
+                pieChart.setDescription(description);
+
+                PieDataSet dataSet = new PieDataSet(yValues,"motor_step");
+                dataSet.setSliceSpace(3f);
+                dataSet.setSelectionShift(5f);
+                dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+
+                PieData data = new PieData(dataSet);
+                data.setValueTextSize(13f);
+                data.setValueTextColor(Color.WHITE);
+
+                pieChart.setData(data);
+            }
+
+
+
 
         } catch (JSONException e) {
             //Log.e(TAG, "Exception in processing JSONString.", e);
             e.printStackTrace();
         }
-        return output;
+
     }
 
     class Tag {
@@ -112,4 +223,3 @@ public class GetLog extends GetRequest {
         }
     }
 }
-

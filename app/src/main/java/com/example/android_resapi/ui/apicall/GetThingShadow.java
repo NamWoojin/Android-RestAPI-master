@@ -50,7 +50,7 @@ public class GetThingShadow extends GetRequest {
         TextView reported_modeTV = activity.findViewById(R.id.motor_step_id);
         String mode = state.get("reported_step");
         reported_modeTV.setText(mode.concat("단계"));
-        //reported_ledTV.setText(state.get("reported_LED"));
+//        reported_ledTV.setText(state.get("reported_LED"));
 
         //TextView desired_stepTV = activity.findViewById(R.id.desired_);
         //TextView desired_tempTV = activity.findViewById(R.id.desired_temp);
