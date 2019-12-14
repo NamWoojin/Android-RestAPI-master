@@ -71,6 +71,7 @@
 	(링크와 다르게 설정해야 하는 부분)
 	
 	**[아두이노 코드 다운로드 링크]**(https://github.com/YeJi17/NoteBookCooler_Arduino)
+	![](figures/아두이노코드다운로드.PNG)
 	
 	iot 사물 이름 : 
 	```
