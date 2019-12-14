@@ -69,7 +69,10 @@
 1. [AWS IoT와 아두이노 연결하기](https://kwanulee.github.io/IoTPlatform/start-aws-iot.html#2)
 
 
-	iot 사물 이름 : **MyFanCooler**
+	iot 사물 이름 : 
+	```
+	MyFanMotor
+	```
 	
 
 ![](figures/arduino_code_1.PNG)
@@ -80,7 +83,10 @@
 
 	디바이스가 생성하는 정보에 맞게 Tag를 지정
 	
-	**규칙쿼리설명문** SELECT *, 'MyFanMotor' as device FROM '$aws/things/MyFanMotor/shadow/update/documents'
+	**규칙쿼리설명문** 
+	```
+	SELECT *, 'MyFanMotor' as device FROM '$aws/things/MyFanMotor/shadow/update/documents'
+	```
 	
 ![](figures/디바이스데이터저장lambda함수.png)
 
