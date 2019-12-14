@@ -125,16 +125,11 @@
 
 ![](figures/로그조회2.jpg)
 
-- 아래 세가지 버튼을 클릭하기 전에 API URI를 입력해야 합니다.
+- 안드로이드 어플을 실행하기 전에 API URI를 입력해야 합니다.
 	- Amazon API Gateway로 부터 만들어진  API 서버 URL을 기록해 둔다. 
 		
 		```
 		https://xxxxxxxx.execute-api.ap-northeast-2.amazonaws.com/prod 
-		```
-	- 사물목록 조회 API URI
-		
-		```
-		https://xxxxxxxx.execute-api.ap-northeast-2.amazonaws.com/prod/devices
 		```
 	
 	- 사물상태 조회/변경 API URI
