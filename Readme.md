@@ -61,13 +61,27 @@
 다음 방법을 통해서 다음 IoT 백엔드를 구축한다.
 
 1. [AWS IoT와 아두이노 연결하기](https://kwanulee.github.io/IoTPlatform/start-aws-iot.html#2)
-(위 링크와 다른 주요 부분)
 
+(위 링크와 다른 주요 부분)
+	iot 사물 이름 : MyFanCooler
+	![](figures/arduino_code_1.png)
+	![](figures/arduino_code_2.png)
 
 2. [디바이스 데이터 저장 IoT 백엔드 구축](https://kwanulee.github.io/IoTPlatform/dynamodb.html#4)
+
+(위 링크와 다른 주요 부분)
+
 3. [디바이스 상태 조회 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.2.html)
+
+(위 링크와 다른 주요 부분)
+
 4. [디바이스 상태 변경 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.3.html)
+
+(위 링크와 다른 주요 부분)
+
 5. [디바이스 로그 조회 REST API 구축](https://kwanulee.github.io/IoTPlatform/api-gateway-3.4.html)
+
+(위 링크와 다른 주요 부분)
 
 ### 3. Android 앱 설치 및 실행
 - 설치 방법
