@@ -15,8 +15,10 @@
 
 	![](figures/전체소프트웨어.png)
 	
+	[아두이노 구조도]
 	![](figures/아두이노구조도.PNG)
 	
+	[하드웨어 구조도]
 	![](figures/hardware.png)
 
 ### 1. REST API 설계
@@ -69,9 +71,10 @@
 (위 링크와 다른 주요 부분)
 	iot 사물 이름 : **MyFanCooler**
 	
-	[loop문]
-	![](figures/arduino_code_1.PNG)
-	![](figures/arduino_code_2.PNG)
+[loop문]
+![](figures/arduino_code_1.PNG)
+	
+![](figures/arduino_code_2.PNG)
 
 2. [디바이스 데이터 저장 IoT 백엔드 구축](https://kwanulee.github.io/IoTPlatform/dynamodb.html#4)
 
