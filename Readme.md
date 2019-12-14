@@ -14,6 +14,10 @@
 		- 디바이스의 로그 정보를 조회하는 REST API
 
 	![](figures/전체소프트웨어.png)
+	
+	![](figures/아두이노구조도.png)
+	
+	![](figures/hardware.png)
 
 ### 1. REST API 설계
 - 다음 프로그램 코드를 실행시키기 위해서는 다음 형식의 **REST API**가 준비되어 있어야 합니다.
@@ -64,6 +68,7 @@
 
 (위 링크와 다른 주요 부분)
 	iot 사물 이름 : **MyFanCooler**
+	[loop문]
 	![](figures/arduino_code_1.PNG)
 	![](figures/arduino_code_2.PNG)
 
