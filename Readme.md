@@ -64,8 +64,8 @@
 
 (위 링크와 다른 주요 부분)
 	iot 사물 이름 : MyFanCooler
-	![](figures/arduino_code_1.png)
-	![](figures/arduino_code_2.png)
+	![](figures/arduino_code_1.PNG)
+	![](figures/arduino_code_2.PNG)
 
 2. [디바이스 데이터 저장 IoT 백엔드 구축](https://kwanulee.github.io/IoTPlatform/dynamodb.html#4)
 
