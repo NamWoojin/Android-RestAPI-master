@@ -71,8 +71,8 @@
 (위 링크와 다른 주요 부분)
 	iot 사물 이름 : **MyFanCooler**
 	
-[loop문]
-	![](figures/arduino_code_1.PNG)
+
+![](figures/arduino_code_1.PNG)
 	
 ![](figures/arduino_code_2.PNG)
 
