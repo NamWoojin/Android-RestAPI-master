@@ -19,10 +19,7 @@
         </intent-filter>
     </activity>
 
-        <activity android:name=".ui.ListThingsActivity" />
         <activity android:name=".ui.LogActivity" />
-        <activity android:name=".ui.DeviceActivity" />
-        <activity android:name=".ui.MainActivity"/>
 
     </application>
 

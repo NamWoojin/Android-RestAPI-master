@@ -44,7 +44,7 @@ public class GetLog extends GetRequest {
     }
 
     @Override
-    protected void onPreExecute() {
+    protected void onPreExecute() { //사용자가 설정한 시작 날짜, 종료 날짜, url 가져오기
         try {
 
             TextView textView_Date1 = activity.findViewById(R.id.textView_date1);
@@ -80,7 +80,7 @@ public class GetLog extends GetRequest {
 
     }
 
-    protected void getArrayListFromJSONString(String jsonString) {
+    protected void getArrayListFromJSONString(String jsonString) {  //로그 값 조회 후 그래프 생성
         List<Entry> entries = new ArrayList<>();
 
         try {
@@ -94,7 +94,7 @@ public class GetLog extends GetRequest {
             JSONObject root = new JSONObject(jsonString);
             JSONArray jsonArray = root.getJSONArray("data");
 
-            if(mode.equals("temp")){
+            if(mode.equals("temp")){    //온도 그래프 생성
                 lineChart.setVisibility(View.VISIBLE);
                 pieChart.setVisibility(View.GONE);
 
@@ -114,9 +114,7 @@ public class GetLog extends GetRequest {
                 dataset.setLineWidth(2);
                 dataset.setCircleRadius(6);
                 dataset.setCircleColor(Color.parseColor("#FFFE9C88"));
-                //dataset.setCircleColorHole(Color.rgb(245,217,97));
                 dataset.setColor(Color.parseColor("#FFFE9C88"));
-                //dataset.setDrawCircleHole(true);
                 dataset.setDrawCircles(true);
                 dataset.setDrawHorizontalHighlightIndicator(false);
                 dataset.setDrawHighlightIndicators(false);
@@ -147,7 +145,7 @@ public class GetLog extends GetRequest {
                 lineChart.invalidate();
             }
 
-            else if(mode.equals("step")){
+            else if(mode.equals("step")){   //모터 횟수 그래프 생성
                 lineChart.setVisibility(View.GONE);
                 pieChart.setVisibility(View.VISIBLE);
 
@@ -179,7 +177,6 @@ public class GetLog extends GetRequest {
                 yValues.add(new PieEntry(countTwo,"2단계"));
                 yValues.add(new PieEntry(countThree,"3단계"));
 
-//                pieChart.animateY(1000,Easing.EasingOption.EaseInOutElastic);
 
                 Description description = new Description();
                 description.setText("");

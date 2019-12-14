@@ -38,11 +38,10 @@ public class GetThingShadow extends GetRequest {
     }
 
     @Override
-    protected void onPostExecute(String jsonString) {
+    protected void onPostExecute(String jsonString) {   //getStateFromJSONString에서 가져온 온도와 쿨러 단계값을 ui에 표시
         if (jsonString == null)
             return;
         Map<String, String> state = getStateFromJSONString(jsonString);
-        //TextView reported_ledTV = activity.findViewById(R.id.reported_led);
         TextView reported_tempTV = activity.findViewById(R.id.temperature);
         temperature = state.get("reported_temperature");
         reported_tempTV.setText(temperature);
@@ -50,16 +49,10 @@ public class GetThingShadow extends GetRequest {
         TextView reported_modeTV = activity.findViewById(R.id.motor_step_id);
         String mode = state.get("reported_step");
         reported_modeTV.setText(mode.concat("단계"));
-//        reported_ledTV.setText(state.get("reported_LED"));
-
-        //TextView desired_stepTV = activity.findViewById(R.id.desired_);
-        //TextView desired_tempTV = activity.findViewById(R.id.desired_temp);
-        //desired_tempTV.setText(state.get("desired_temperature"));
-        //reported_modeTV.setText(state.get("desired_step"));
 
     }
 
-    protected Map<String, String> getStateFromJSONString(String jsonString) {
+    protected Map<String, String> getStateFromJSONString(String jsonString) {   //jsonString으로부터 온도와 쿨러 단계값 가져오기
         Map<String, String> output = new HashMap<>();
         try {
             // 처음 double-quote와 마지막 double-quote 제거
@@ -74,12 +67,6 @@ public class GetThingShadow extends GetRequest {
             String stepValue = reported.getString("motor_step");
             output.put("reported_temperature", tempValue);
             output.put("reported_step",stepValue);
-
-//            JSONObject desired = state.getJSONObject("desired");
-//            String desired_tempValue = desired.getString("temperature")
-//            String desired_stepValue = desired.getString("motor_step");
-//            output.put("desired_temperature", desired_tempValue);
-//            output.put("desired_step",desired_stepValue);
 
         } catch (JSONException e) {
             Log.e(TAG, "Exception in processing JSONString.", e);

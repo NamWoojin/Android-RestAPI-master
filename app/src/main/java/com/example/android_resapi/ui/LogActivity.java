@@ -32,7 +32,7 @@ public class LogActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        getLogsURL = intent.getStringExtra("getLogsURL");
+        getLogsURL = intent.getStringExtra("getLogsURL");   //FirstActivity로부터 url받아오기
         Log.i(TAG, "getLogsURL="+getLogsURL);
 
         final Button tempGraphBtn = findViewById(R.id.temperature_graph);
@@ -56,7 +56,7 @@ public class LogActivity extends AppCompatActivity {
             }
         });
 
-        Button startDateBtn = findViewById(R.id.start_date_button);
+        Button startDateBtn = findViewById(R.id.start_date_button); //조회 시작 날짜 설정
         startDateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,28 +78,7 @@ public class LogActivity extends AppCompatActivity {
             }
         });
 
-//        Button startTimeBtn = findViewById(R.id.start_time_button);
-//        startTimeBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                TimePickerDialog.OnTimeSetListener listener = new TimePickerDialog.OnTimeSetListener() {
-//
-//                    @Override
-//                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-//                        TextView textView_Time1 = (TextView)findViewById(R.id.textView_time1);
-//                        textView_Time1.setText(String.format("%d:%d", hourOfDay, minute));
-//                    }
-//                };
-//
-//                TimePickerDialog dialog = new TimePickerDialog(LogActivity.this, listener, 0, 0, false);
-//                dialog.show();
-//
-//            }
-//        });
-
-
-        Button endDateBtn = findViewById(R.id.end_date_button);
+        Button endDateBtn = findViewById(R.id.end_date_button); //조회 종료 날짜 설정
         endDateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,27 +100,7 @@ public class LogActivity extends AppCompatActivity {
             }
         });
 
-//        Button endTimeBtn = findViewById(R.id.end_time_button);
-//        endTimeBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                TimePickerDialog.OnTimeSetListener listener = new TimePickerDialog.OnTimeSetListener() {
-//
-//                    @Override
-//                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-//                        TextView textView_Time2 = (TextView)findViewById(R.id.textView_time2);
-//                        textView_Time2.setText(String.format("%d:%d", hourOfDay, minute));
-//                    }
-//                };
-//
-//                TimePickerDialog dialog = new TimePickerDialog(LogActivity.this, listener, 0, 0, false);
-//                dialog.show();
-//
-//            }
-//        });
-
-        Button start = findViewById(R.id.log_start_button);
+        Button start = findViewById(R.id.log_start_button); //로그 조회 시작
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
